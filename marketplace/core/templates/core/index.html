@@ -1,0 +1,66 @@
+{% extends "core/base.html" %}
+
+{% block title %}Home{% endblock title %}
+{% block content %}
+<style>
+    .item-container {
+        display: block;
+        text-decoration: none;
+    }
+
+    .image-container {
+        position: relative;
+        height: 200px; /* Set a fixed height for the image container */
+        overflow: hidden; /* Hide any overflow to keep it within the container */
+    }
+
+    .item-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Maintain aspect ratio and cover the container */
+    }
+    .item-card{
+        transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+
+    }
+    .item-card:hover {
+        transform: scale(0.8);
+    }
+</style>
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+    <h2 class="mb-12 text-2xl text-center">Newest items</h2>
+
+    <div class="grid grid-cols-3 gap-3">
+        {% for item in items %}
+        <div class="item-card">
+            <a href="{% url "item:detail" item.id %}" class="item-container">
+                <div class="image-container">
+                    <img src="{{ item.image.url }}" class="rounded-t-xl item-image">
+                </div>
+
+                <div class="p-6 bg-white rounded-b-xl">
+                    <h2 class="text-2xl">{{item.name}}</h2>
+                    <p class="text-gray-500">Price: ${{item.price}}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+    <h2 class="mb-12 text-2xl text-center">Categories</h2>
+
+    <div class="grid grid-cols-3 gap-3">
+        {% for category in categories %}
+        <div>
+            <a href="#">
+                <div class="p-6 bg-white rounded-b-xl">
+                    <h2 class="text-2xl">{{category.name}}</h2>
+                    <p class="text-gray-500">{{category.items.count}} items</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
