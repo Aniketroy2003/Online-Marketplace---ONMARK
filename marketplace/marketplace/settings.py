@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-1ur_$#6#o=dsk3fp_o5%sp-)%dhq8!e4xgg!_*nx1n4&q6f3oq
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-# CSRF_TRUSTED_ORIGINS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://online-marketplace-onmark-production.up.railway.app']
 
 
 LOGIN_URL = '/login/'
