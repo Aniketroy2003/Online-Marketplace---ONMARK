@@ -1,1 +1,1 @@
-web: guincorn marketplace.wsgi 
+web: guincorn marketplace.wsgi --log-file - 
