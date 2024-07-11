@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-1ur_$#6#o=dsk3fp_o5%sp-)%dhq8!e4xgg!_*nx1n4&q6f3oq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['']
 
 
 LOGIN_URL = '/login/'
@@ -83,9 +84,17 @@ WSGI_APPLICATION = 'marketplace.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'wOKKkkLkhKeIXdMyeqLHjWtPkOwAFsOQ',
+        'HOST': 'roundhouse.proxy.rlwy.net',
+        'PORT': '37361'
     }
 }
 
